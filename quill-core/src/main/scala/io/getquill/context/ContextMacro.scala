@@ -17,8 +17,10 @@ import io.getquill.idiom.StringToken
 import io.getquill.idiom.ScalarLiftToken
 import io.getquill.idiom.ReifyStatement
 import io.getquill.idiom.LoadNaming
+import io.getquill.util.Messages._
 import scala.util.Success
 import scala.util.Failure
+import io.getquill.CompositeContext
 
 trait ContextMacro extends Quotation {
   val c: MacroContext
@@ -65,7 +67,7 @@ trait ContextMacro extends Quotation {
 
         ProbeStatement(idiom.prepareForProbing(string), c)
 
-        c.info(string)
+        c.info(CompositeContextMacro.contextPrefix(c) + string)
 
         q"($normalizedAst, ${statement: Token})"
       case Failure(ex) =>

@@ -15,7 +15,7 @@ import com.typesafe.config.Config
 class MirrorContextWithQueryProbing[Idiom <: BaseIdiom, Naming <: NamingStrategy]
   extends MirrorContext[Idiom, Naming] with QueryProbing
 
-class MirrorContext[Idiom <: BaseIdiom, Naming <: NamingStrategy]
+class MirrorContext[+Idiom <: BaseIdiom, +Naming <: NamingStrategy]
   extends Context[Idiom, Naming]
   with MirrorEncoders
   with MirrorDecoders {
